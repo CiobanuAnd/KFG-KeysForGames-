@@ -1,5 +1,8 @@
+body{
+    background-color: #28034b;
+}
 .topnav {
-  background-color: #333;
+  background-color: #1a0231;
   overflow: hidden;
 }
 .topnav a {
@@ -12,11 +15,39 @@
 }
 
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #5f0a5b;
+  color: rgb(0, 0, 0);
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #6302ff;
   color: white;
+}
+
+.secondnav {
+    background-color: rgb(55, 23, 82);
+  overflow: hidden;
+}
+
+.secondnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.secondnav a:hover {
+  background-color: #770c72;
+  color: rgb(0, 0, 0);
+}
+
+.secondnav a.active {
+  background-color: #6302ff;
+  color: white;
+}
+
+.search-form {
+    
 }
