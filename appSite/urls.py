@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import views
+from appSite.views import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('games/', views.games_list, name='game_list')
 ]
