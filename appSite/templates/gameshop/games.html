@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista Jocurilor</title>
+</head>
+<body>
+    <h1>Lista Jocurilor</h1>
+
+    <ul>
+        {% for game in games %}
+            <li>
+                {{ game.title }} - {{ game.price }}€ 
+                (cumpărat de: {{ game.buyer.username }}) 
+                pe {{ game.purchase_date|date:"d-m-Y H:i" }}
+            </li>
+        {% empty %}
+            <li>Nu există jocuri încă.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}">Înapoi la pagina principală</a>
+</body>
+</html>
