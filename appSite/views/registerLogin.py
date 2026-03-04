@@ -19,7 +19,7 @@ def register_view(request):
         user.save()
         return redirect("login")
 
-    return render(request, "register.html")
+    return render(request, "gameshop/register.html")
 
 
 def login_view(request):
@@ -35,4 +35,4 @@ def login_view(request):
         else:
             messages.error(request, "Invalid credentials")
 
-    return render(request, "login.html")
+    return render(request, "gameshop/login.html")
