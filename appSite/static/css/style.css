@@ -35,10 +35,10 @@ body.gamesPage {
   background-color: #6302ff;
   color: white;
 }
-/*
 
-PENTRU BUTOANELE DIN DREAPTA SA ARATE DIFERIT
-.topnav .right-links a {
+
+/*PENTRU BUTOANELE DIN DREAPTA SA ARATE DIFERIT*/
+/*.topnav .right-links a {
     background-color: #007bff;
     color: white;
     padding: 6px 10px;
