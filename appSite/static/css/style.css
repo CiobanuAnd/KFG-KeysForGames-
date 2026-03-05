@@ -1,7 +1,17 @@
+/*BACKGROUND COLOR*/
 .homePage{
-    background-color: #7d52a7;
+    background-color: #dd84e5;
 }
+
+body.gamesPage {
+    background-color: #dd84e5;  
+}
+
+
+/*NAVIGATION BAR*/
 .topnav {
+  display: flex;
+  justify-content: space-between;
   background-color: #1a0231;
   overflow: hidden;
 }
@@ -17,30 +27,49 @@
 .topnav a:hover {
   background-color: #5f0a5b;
   color: rgb(0, 0, 0);
+  font-weight: bold;
+  border-radius: 4px;
 }
 
 .topnav a.active {
   background-color: #6302ff;
   color: white;
 }
+/*
 
+PENTRU BUTOANELE DIN DREAPTA SA ARATE DIFERIT
+.topnav .right-links a {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.topnav .right-links a:hover {
+    background-color: #0056b3;
+}
+*/
+
+/*SECOND NAVIGATION BAR*/
 .secondnav {
-    background-color: rgb(55, 23, 82);
-  overflow: hidden;
+    display: flex;
+    align-items: center;   /* vertically aligns links and form */
+    gap: 10px;             /* spacing between links and form */
+    background-color: #381252; /* or same color as topnav */
+    padding: 8px 12px;
 }
 
+/* links inside secondnav */
 .secondnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 14px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
 }
-
 .secondnav a:hover {
   background-color: #770c72;
   color: rgb(0, 0, 0);
+  font-weight: bold;
+  border-radius: 4px;
 }
 
 .secondnav a.active {
@@ -48,6 +77,117 @@
   color: white;
 }
 
-.search-form {
+.secondnav .search-form {
+    display: flex;
+    margin-left: auto; /* pushes it to the right side */
+}
+
+.secondnav .search-form input[type="text"] {
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.secondnav .search-form button {
+    padding: 4px 6px;
+    margin-left: 4px;
+    border-radius: 4px;
+    border: none;
+    background-color: #770c72;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .secondnav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
     
+    .secondnav .search-form {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 8px;
+    }
+    
+    .secondnav .search-form input[type="text"] {
+        flex: 1;
+    }
+}
+
+
+/*LOGIN PAGE*/
+/* Login page form styling */
+body.loginPage .login-form {
+    max-width: 400px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+body.loginPage .login-form input,
+body.loginPage .login-form button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+body.loginPage .login-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+body.loginPage .login-form button:hover {
+    background-color: #0056b3;
+}
+
+body.loginPage a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+body.loginPage a:hover {
+    text-decoration: underline;
+}
+
+/*REGISTER PAGE*/
+/* register page form styling */
+body.registerPage .register-form {
+    max-width: 400px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+body.registerPage .register-form input,
+body.registerPage .register-form button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+body.registerPage .register-form button {
+    background-color: #28a745; /* green button for register */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+body.registerPage .register-form button:hover {
+    background-color: #218838;
+}
+
+body.registerPage a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+body.registerPage a:hover {
+    text-decoration: underline;
 }
