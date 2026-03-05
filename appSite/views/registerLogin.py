@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from appSite.models import User as AppUser
 
 def register_view(request):
     if request.method == "POST":
@@ -19,11 +20,12 @@ def register_view(request):
         )
         user.save()
 
-        # AppUser.objects.create(
-        #     username = username,
-        #     email = email,
-        #     balance = 0.0
-        # )
+        AppUser.objects.create(
+             username = username,
+             email = email,
+             balance = 0.0
+         )
+        
         messages.success(request, 'Account created succesfully!')
         return redirect("login")
 
