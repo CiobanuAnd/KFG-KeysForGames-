@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect
 from appSite.models import User, Game, Purchase
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 @login_required
 def buy_product(request, game_id):
@@ -13,11 +14,13 @@ def buy_product(request, game_id):
 
     # already owned
     if Purchase.objects.filter(user=user, game=game).exists():
-        return redirect('already_owned')
-
+        messages.info(request, "You already own this game!")
+        return redirect('home')
+    
     # insufficient balance
     if user.balance < game.price:
-        return redirect('not_enough_money')
+        messages.info(request, "Not enough money")
+        return redirect('home')
 
     # subtract balance
     user.balance -= game.price

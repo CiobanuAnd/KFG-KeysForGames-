@@ -1,12 +1,20 @@
-
 {% extends "gameshop/base.html" %}
-{% load static%}
+{% load static %}
 
 {% block title %}Home - KeysForGames{% endblock %}
 
 {% block content %}
 
 <h2>Games</h2>
+
+<!-- Display messages -->
+{% if messages %}
+  <ul class="messages">
+  {% for message in messages %}
+    <li>{{ message }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
 
 <div class="games-grid">
     {% for game in games %}
