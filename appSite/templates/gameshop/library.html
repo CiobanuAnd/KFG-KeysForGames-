@@ -1,0 +1,22 @@
+<h2>Welcome, {{ user.username }}</h2>
+<h3>Your balance: ${{ user.balance }}</h3>
+
+<!-- Add balance form -->
+<form method="POST">
+    {% csrf_token %}
+    <input type="number" name="amount" step="0.01" min="0" placeholder="Add amount">
+    <button type="submit">Add Balance</button>
+</form>
+
+<hr>
+
+<h3>Your Library:</h3>
+{% if purchased_games %}
+    <ul>
+        {% for game in purchased_games %}
+            <li>{{ game.title }} - ${{ game.price }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>You haven’t bought any games yet.</p>
+{% endif %}

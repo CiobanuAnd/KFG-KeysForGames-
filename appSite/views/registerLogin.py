@@ -10,7 +10,7 @@ def register_view(request):
         password = request.POST["password"]
         email = request.POST["email"]
 
-        if User.objects.filter(username=username).exists():
+        if User.objects.filter(username=username).exists() or AppUser.objects.filter(username=username).exists():
             messages.error(request, "Username already exists")
             return redirect("register")
 
