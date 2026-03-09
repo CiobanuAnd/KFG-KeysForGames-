@@ -13,7 +13,9 @@
     <div class="game-card">
         <div class="game-image">
             <!-- Placeholder, you can replace with real images -->
-            <img src="{% static 'images/game-placeholder.jpg' %}" alt="{{ game.title }}">
+            <img src="{% if game.image %}{{ game.image.url }}{% else %}
+            {% static 'images/game-placeholder.jpg' %}{% endif %}" 
+            alt="{{ game.title }}">
         </div>
         <div class="game-info">
             <h3>{{ game.title }}</h3>

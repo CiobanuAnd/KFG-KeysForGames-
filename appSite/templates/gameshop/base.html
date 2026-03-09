@@ -21,6 +21,8 @@
         {% if user.is_authenticated %}
             <span class="balance">Balance: ${{ custom_user.balance }}</span>
 
+            <a href="{% url 'library' %}" class="topnav-link library-btn">Library</a>
+            
             <form action="{% url 'logout' %}" method="post" style="display:inline;">
                 {% csrf_token %}
                 <button type="submit" class="topnav-link">Logout</button>

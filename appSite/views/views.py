@@ -5,10 +5,13 @@ from appSite.models import Game
 def home(request):
     from appSite.models.user import User as CustomUser
     games = Game.objects.all()
+    custom_user = None  # default if not logged in
     if request.user.is_authenticated:
-        custom_user = CustomUser.objects.get(username=request.user.username)
-    else:
-        custom_user = None
+        try:
+            custom_user = CustomUser.objects.get(username=request.user.username)
+        except CustomUser.DoesNotExist:
+            custom_user = None
+
     return render(request, "gameshop/home.html", {"games": games, "custom_user": custom_user})
 
 
