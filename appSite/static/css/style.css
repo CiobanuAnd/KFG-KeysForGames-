@@ -54,6 +54,10 @@ body.gamesPage {
     border-radius: 4px;
 }
 
+.balance {
+    color:#ccc
+}
+
 /*PENTRU BUTOANELE DIN DREAPTA SA ARATE DIFERIT*/
 /*.topnav .right-links a {
     background-color: #007bff;

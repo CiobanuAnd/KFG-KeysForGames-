@@ -1,6 +1,22 @@
 {% extends "gameshop/base.html" %}
 
+{% block title %}Home - KeysForGames{% endblock %}
+
 {% block content %}
-    <h2>Welcome to our Game Shop!</h2>
-    <p>Browse our collection of amazing games.</p>
+
+<h2>Games</h2>
+
+{% for game in games %}
+<div class="game-card">
+
+    <h3>{{ game.title }}</h3>
+    <p>Price: ${{ game.price }}</p>
+
+    {% include "gameshop/buybutton.html" with game=game %}
+
+</div>
+{% empty %}
+<p>No games available.</p>
+{% endfor %}
+
 {% endblock %}

@@ -6,9 +6,10 @@
     <title>{% block title %}KeysForGames{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body class="{% block body_class %}homePage{% endblock %}">
 
-    <!-- Top Navigation -->
+<!-- Top Navigation -->
 <div class="topnav">
     <div class="left-links">
         <a class="active" href="{% url 'home' %}">Home</a>
@@ -18,11 +19,12 @@
 
     <div class="right-links">
         {% if user.is_authenticated %}
+            <span class="balance">Balance: ${{ user.balance }}</span>
+
             <form action="{% url 'logout' %}" method="post" style="display:inline;">
                 {% csrf_token %}
                 <button type="submit" class="topnav-link">Logout</button>
             </form>
-    </form>
         {% else %}
             <a href="{% url 'login' %}">Login</a>
             <a href="{% url 'register' %}">Register</a>
@@ -30,28 +32,27 @@
     </div>
 </div>
 
-    <!-- Secondary Navigation -->
-    <div class="secondnav">
-        <a class="active" href="#browse">Browse</a>
-        <a href="#recommandations">Recommandations</a>
-        <a href="#categories">Categories</a>
+<!-- Secondary Navigation -->
+<div class="secondnav">
+    <a class="active" href="#browse">Browse</a>
+    <a href="#recommandations">Recommendations</a>
+    <a href="#categories">Categories</a>
 
-        <!-- Search Bar -->
-        <form action="" method="get" class="search-form">
-            <input type="text" name="q" placeholder="Search games..." />
-            <button type="submit">Search</button>
-        </form>
-    </div>
+    <form action="" method="get" class="search-form">
+        <input type="text" name="q" placeholder="Search games..." />
+        <button type="submit">Search</button>
+    </form>
+</div>
 
-    <header>
-        <h1>🎮 KeysForGames</h1>
-    </header>
+<header>
+    <h1>🎮 KeysForGames</h1>
+</header>
 
-    <!-- Main Content -->
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+<!-- Main Content -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
 
 </body>
 </html>
