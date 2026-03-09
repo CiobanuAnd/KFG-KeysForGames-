@@ -36,7 +36,23 @@ body.gamesPage {
   color: white;
 }
 
+.topnav-link {
+    background: none;
+    border: none;
+    padding: 14px 16px;
+    font: inherit;
+    color: #f2f2f2;         /* same as your links */
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+}
 
+.topnav-link:hover {
+    background-color: #5f0a5b;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border-radius: 4px;
+}
 
 /*PENTRU BUTOANELE DIN DREAPTA SA ARATE DIFERIT*/
 /*.topnav .right-links a {
@@ -119,6 +135,10 @@ body.gamesPage {
 
 /*LOGIN PAGE*/
 /* Login page form styling */
+body.loginPage {
+    background-color: #dd84e5;
+}
+
 body.loginPage .login-form {
     max-width: 400px;
     margin: 30px auto;
@@ -136,18 +156,18 @@ body.loginPage .login-form button {
 }
 
 body.loginPage .login-form button {
-    background-color: #007bff;
+    background-color: #6302ff;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 body.loginPage .login-form button:hover {
-    background-color: #0056b3;
+    background-color:#381252;
 }
 
 body.loginPage a {
-    color: #007bff;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -157,6 +177,9 @@ body.loginPage a:hover {
 
 /*REGISTER PAGE*/
 /* register page form styling */
+body.registerPage {
+    background-color: #dd84e5;
+}
 body.registerPage .register-form {
     max-width: 400px;
     margin: 30px auto;
@@ -174,18 +197,18 @@ body.registerPage .register-form button {
 }
 
 body.registerPage .register-form button {
-    background-color: #28a745; /* green button for register */
+    background-color:#6302ff; 
     color: white;
     border: none;
     cursor: pointer;
 }
 
 body.registerPage .register-form button:hover {
-    background-color: #218838;
+    background-color:#381252;
 }
 
 body.registerPage a {
-    color: #007bff;
+    color: #ffffff;
     text-decoration: none;
 }
 
