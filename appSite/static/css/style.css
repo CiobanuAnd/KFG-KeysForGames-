@@ -292,3 +292,19 @@ body.registerPage a:hover {
 .game-info form button:hover {
     background-color: #e03e00;
 }
+
+/* Messages */
+ul.messages {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+ul.messages li {
+    background-color: #fffae6;
+    border: 1px solid #ffe58f;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    color: #663c00;
+}
