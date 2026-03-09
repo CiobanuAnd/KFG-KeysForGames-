@@ -3,9 +3,14 @@ from appSite.models import Game
 
 # Create your views here.
 def home(request):
-    #return render(request, 'gameshop/home.html')
+    from appSite.models.user import User as CustomUser
     games = Game.objects.all()
-    return render(request, "gameshop/home.html", {"games": games})
+    if request.user.is_authenticated:
+        custom_user = CustomUser.objects.get(username=request.user.username)
+    else:
+        custom_user = None
+    return render(request, "gameshop/home.html", {"games": games, "custom_user": custom_user})
+
 
 def games_list(request):
     all_games = Game.objects.all().select_related('buyer')

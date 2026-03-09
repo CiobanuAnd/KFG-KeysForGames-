@@ -19,7 +19,7 @@
 
     <div class="right-links">
         {% if user.is_authenticated %}
-            <span class="balance">Balance: ${{ user.balance }}</span>
+            <span class="balance">Balance: ${{ custom_user.balance }}</span>
 
             <form action="{% url 'logout' %}" method="post" style="display:inline;">
                 {% csrf_token %}

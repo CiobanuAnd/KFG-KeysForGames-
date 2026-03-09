@@ -1,4 +1,6 @@
+
 {% extends "gameshop/base.html" %}
+{% load static%}
 
 {% block title %}Home - KeysForGames{% endblock %}
 
@@ -6,17 +8,21 @@
 
 <h2>Games</h2>
 
-{% for game in games %}
-<div class="game-card">
-
-    <h3>{{ game.title }}</h3>
-    <p>Price: ${{ game.price }}</p>
-
-    {% include "gameshop/buybutton.html" with game=game %}
-
+<div class="games-grid">
+    {% for game in games %}
+    <div class="game-card">
+        <div class="game-image">
+            <!-- Placeholder, you can replace with real images -->
+            <img src="{% static 'images/game-placeholder.jpg' %}" alt="{{ game.title }}">
+        </div>
+        <div class="game-info">
+            <h3>{{ game.title }}</h3>
+            <p class="price">${{ game.price }}</p>
+            {% include "gameshop/buybutton.html" with game=game %}
+        </div>
+    </div>
+    {% empty %}
+    <p>No games available.</p>
+    {% endfor %}
 </div>
-{% empty %}
-<p>No games available.</p>
-{% endfor %}
-
 {% endblock %}

@@ -219,3 +219,76 @@ body.registerPage a {
 body.registerPage a:hover {
     text-decoration: underline;
 }
+
+
+/*GRID GAMES*/
+
+/* Container for grid */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Game card */
+.game-card {
+    background-color: #1e1e1e;
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover effect */
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Game image */
+.game-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Info section */
+.game-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Game title */
+.game-info h3 {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Price */
+.price {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Buy button inside the card */
+.game-info form button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4500;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.game-info form button:hover {
+    background-color: #e03e00;
+}
