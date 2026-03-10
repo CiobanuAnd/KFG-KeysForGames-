@@ -41,7 +41,7 @@
         <a href="#categories">Categories</a>
 
         <form action="" method="get" class="search-form">
-            <input type="text" name="q" placeholder="Search games..." />
+            <input type="text" name="q" placeholder="Search games..." value="{{ query|default:'' }}">
             <button type="submit">Search</button>
         </form>
     </div>
