@@ -27,4 +27,4 @@ def add_review(request, game_id):
             except ValueError:
                 pass  # ignore invalid ratings
 
-    return redirect('my_library')
+    return redirect('library')
