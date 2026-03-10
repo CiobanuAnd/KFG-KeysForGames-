@@ -14,11 +14,11 @@ def register_view(request):
             messages.error(request, "Username already exists")
             return redirect("register")
 
-        user = User.objects.create_user(
-            username=username,
-            password=password
-        )
-        user.save()
+        # user = User.objects.create_user(
+        #     username=username,
+        #     password=password
+        # )
+        # user.save()
 
         AppUser.objects.create(
              username = username,
