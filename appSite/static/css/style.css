@@ -308,3 +308,106 @@ ul.messages li {
     border-radius: 4px;
     color: #663c00;
 }
+
+/* LIBRARY PAGE */
+
+/* balance section */
+.library-balance {
+    margin-bottom: 20px;
+}
+
+.balance-form {
+    margin-top: 8px;
+}
+
+.balance-form input {
+    padding: 6px;
+    border-radius: 4px;
+    border: none;
+}
+
+.balance-form button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6302ff;
+    color: white;
+    cursor: pointer;
+}
+
+.balance-form button:hover {
+    background-color: #381252;
+}
+
+/* review button */
+.review-toggle {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #770c72;
+    color: white;
+    cursor: pointer;
+}
+
+.review-toggle:hover {
+    background-color: #5f0a5b;
+}
+
+/* review form */
+.review-form {
+    display: none;
+    margin-top: 10px;
+}
+
+.review-form textarea {
+    width: 100%;
+    resize: none;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.review-form input {
+    width: 60px;
+    margin-bottom: 5px;
+}
+
+.review-form button {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4500;
+    color: white;
+}
+
+/* review display */
+.reviews {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.review {
+    background-color: #2a2a2a;
+    padding: 6px;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+.review-user {
+    font-weight: bold;
+}
+
+.review-rating {
+    color: #ffd700;
+    margin-left: 5px;
+}
+
+.no-reviews {
+    color: #ccc;
+}
+
+.reviewed-text {
+    color: #aaa;
+    font-size: 0.9rem;
+}

@@ -1,58 +1,92 @@
-<h2>Welcome, {{ user.username }}</h2>
-<h3>Your balance: ${{ user.balance }}</h3>
+{% extends "gameshop/base.html" %}
+{% load static %}
 
-<!-- Add balance form -->
-<form method="POST" action="{% url 'library' %}">
-    {% csrf_token %}
-    <input type="number" name="amount" step="0.01" min="0" placeholder="Add amount">
-    <button type="submit">Add Balance</button>
-</form>
+{% block title %}Library - KeysForGames{% endblock %}
+
+{% block body_class %}gamesPage{% endblock %}
+
+{% block content %}
+
+<h2>Welcome, {{ user.username }}</h2>
+
+<div class="library-balance">
+    <h3>Your balance: ${{ user.balance }}</h3>
+
+    <form method="POST" action="{% url 'library' %}" class="balance-form">
+        {% csrf_token %}
+        <input type="number" name="amount" step="0.01" min="0" placeholder="Add amount">
+        <button type="submit">Add Balance</button>
+    </form>
+</div>
 
 <hr>
 
-<h3>Your Library:</h3>
+<h2>Your Library</h2>
+
 {% if purchased_games %}
-    <ul>
-        {% for game in purchased_games %}
-            <li>
-                <strong>{{ game.title }}</strong> - ${{ game.price }}
-                
-                <!-- Check if user already reviewed the game -->
-                {% if game.id not in reviewed_game_ids %}
-                    <!-- Button to show review form -->
-                    <button type="button" onclick="document.getElementById('review-form-{{ game.id }}').style.display='block'">
-                        Write a Review
-                    </button>
-                    
-                    <!-- Hidden review form -->
-                    <div id="review-form-{{ game.id }}" style="display: none; margin-top: 10px;">
-                        <form method="POST" action="{% url 'add_review' game.id %}">
-                            {% csrf_token %}
-                            <textarea name="text" maxlength="300" placeholder="Write your review" required></textarea><br>
-                            <label>Rating (1-5):</label>
-                            <input type="number" name="rating" min="1" max="5" required><br>
-                            <button type="submit">Submit Review</button>
-                        </form>
-                    </div>
-                {% else %}
-                    <p>You have already reviewed this game.</p>
-                {% endif %}
-                
-                <!-- Display all reviews for this game -->
-                <div style="margin-top: 10px;">
-                    <strong>Reviews:</strong>
-                    {% for review in game.reviews.all %}
-                        <div>
-                            {{ review.user.username }} rated {{ review.rating }}/5
-                            <p>{{ review.text }}</p>
-                        </div>
-                    {% empty %}
-                        <p>No reviews yet.</p>
-                    {% endfor %}
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+
+<div class="games-grid">
+
+{% for game in purchased_games %}
+<div class="game-card">
+
+    <div class="game-image">
+        <img src="{% if game.image %}{{ game.image.url }}{% else %}
+        {% static 'images/game-placeholder.jpg' %}{% endif %}" 
+        alt="{{ game.title }}">
+    </div>
+
+    <div class="game-info">
+        <h3>{{ game.title }}</h3>
+        <p class="price">${{ game.price }}</p>
+
+        {% if game.id not in reviewed_game_ids %}
+
+        <button class="review-toggle"
+        onclick="document.getElementById('review-form-{{ game.id }}').style.display='block'">
+        Write Review
+        </button>
+
+        <div id="review-form-{{ game.id }}" class="review-form">
+            <form method="POST" action="{% url 'add_review' game.id %}">
+                {% csrf_token %}
+                <textarea name="text" maxlength="300" placeholder="Write your review" required></textarea>
+
+                <label>Rating (1-5)</label>
+                <input type="number" name="rating" min="1" max="5" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        {% else %}
+        <p class="reviewed-text">You already reviewed this game</p>
+        {% endif %}
+
+        <div class="reviews">
+            <strong>Reviews</strong>
+
+            {% for review in game.reviews.all %}
+            <div class="review">
+                <span class="review-user">{{ review.user.username }}</span>
+                <span class="review-rating">{{ review.rating }}/5</span>
+                <p>{{ review.text }}</p>
+            </div>
+            {% empty %}
+            <p class="no-reviews">No reviews yet</p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+
 {% else %}
-    <p>You haven’t bought any games yet.</p>
+<p>You haven't bought any games yet.</p>
 {% endif %}
+
+{% endblock %}
