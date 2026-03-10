@@ -308,3 +308,20 @@ ul.messages li {
     border-radius: 4px;
     color: #663c00;
 }
+
+/* Show Reviews button inside the card */
+.game-info button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4500;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-top: 5px; /* small spacing from Buy button */
+}
+
+.game-info button:hover {
+    background-color: #e03e00;
+}

@@ -20,19 +20,52 @@
     {% for game in games %}
     <div class="game-card">
         <div class="game-image">
-            <!-- Placeholder, you can replace with real images -->
-            <img src="{% if game.image %}{{ game.image.url }}{% else %}
-            {% static 'images/game-placeholder.jpg' %}{% endif %}" 
+            <img src="{% if game.image %}{{ game.image.url }}{% else %}{% static 'images/game-placeholder.jpg' %}{% endif %}" 
             alt="{{ game.title }}">
         </div>
         <div class="game-info">
             <h3>{{ game.title }}</h3>
             <p class="price">${{ game.price }}</p>
+
+            <!-- Buy button -->
             {% include "gameshop/buybutton.html" with game=game %}
+
+           <button type="button" onclick="toggleReviews('{{ game.id }}')">Show Reviews</button>
+
+            <!-- Reviews container, hidden by default -->
+            <div id="reviews-{{ game.id }}" class="reviews-container" style="display: none; margin-top: 10px;">
+                {% if game.reviews.all %}
+                    {% for review in game.reviews.all %}
+                        <div class="review">
+                            {% if review.user %}
+                                <strong>{{ review.user.username }}</strong>
+                            {% else %}
+                                <strong>Anonymous</strong>
+                            {% endif %}
+                            rated {{ review.rating }}/5
+                            <p>{{ review.text }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No reviews yet.</p>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% empty %}
     <p>No games available.</p>
     {% endfor %}
 </div>
+
+<script>
+function toggleReviews(gameId) {
+    const container = document.getElementById(`reviews-${gameId}`);
+    if (container.style.display === "none") {
+        container.style.display = "block";
+    } else {
+        container.style.display = "none";
+    }
+}
+</script>
+
 {% endblock %}

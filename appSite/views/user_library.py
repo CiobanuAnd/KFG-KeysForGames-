@@ -21,7 +21,7 @@ def my_library(request):
         except:
             pass
 
-        return redirect('my_library')
+        return redirect('library')
 
     purchased_games = Game.objects.filter(purchase__user=user)
 
