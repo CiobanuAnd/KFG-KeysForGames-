@@ -309,6 +309,7 @@ ul.messages li {
     color: #663c00;
 }
 
+<<<<<<< HEAD
 /* LIBRARY PAGE */
 
 /* balance section */
@@ -410,4 +411,21 @@ ul.messages li {
 .reviewed-text {
     color: #aaa;
     font-size: 0.9rem;
+=======
+/* Show Reviews button inside the card */
+.game-info button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff4500;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    margin-top: 5px; /* small spacing from Buy button */
+}
+
+.game-info button:hover {
+    background-color: #e03e00;
+>>>>>>> 834f193320f3d332c5503fd2db5d75c3fb7b7125
 }
