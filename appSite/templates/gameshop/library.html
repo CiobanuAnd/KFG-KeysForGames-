@@ -63,21 +63,6 @@
         <p class="reviewed-text">You already reviewed this game</p>
         {% endif %}
 
-        <div class="reviews">
-            <strong>Reviews</strong>
-
-            {% for review in game.reviews.all %}
-            <div class="review">
-                <span class="review-user">{{ review.user.username }}</span>
-                <span class="review-rating">{{ review.rating }}/5</span>
-                <p>{{ review.text }}</p>
-            </div>
-            {% empty %}
-            <p class="no-reviews">No reviews yet</p>
-            {% endfor %}
-
-        </div>
-
     </div>
 
 </div>
