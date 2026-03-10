@@ -4,6 +4,8 @@ from appSite.views import registerLogin
 from appSite.views import buybutton
 from appSite.views import user_library
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -14,3 +16,5 @@ urlpatterns = [
     path('library/', user_library.my_library, name='library'),  # << name="library"
     path('logout/', auth_views.LogoutView.as_view(next_page='home', redirect_field_name=''), name='logout'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
