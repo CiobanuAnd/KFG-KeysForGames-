@@ -2,7 +2,7 @@
 <h3>Your balance: ${{ user.balance }}</h3>
 
 <!-- Add balance form -->
-<form method="POST">
+<form method="POST" action="{% url 'library' %}">
     {% csrf_token %}
     <input type="number" name="amount" step="0.01" min="0" placeholder="Add amount">
     <button type="submit">Add Balance</button>
@@ -14,7 +14,43 @@
 {% if purchased_games %}
     <ul>
         {% for game in purchased_games %}
-            <li>{{ game.title }} - ${{ game.price }}</li>
+            <li>
+                <strong>{{ game.title }}</strong> - ${{ game.price }}
+                
+                <!-- Check if user already reviewed the game -->
+                {% if game.id not in reviewed_game_ids %}
+                    <!-- Button to show review form -->
+                    <button type="button" onclick="document.getElementById('review-form-{{ game.id }}').style.display='block'">
+                        Write a Review
+                    </button>
+                    
+                    <!-- Hidden review form -->
+                    <div id="review-form-{{ game.id }}" style="display: none; margin-top: 10px;">
+                        <form method="POST" action="{% url 'add_review' game.id %}">
+                            {% csrf_token %}
+                            <textarea name="text" maxlength="300" placeholder="Write your review" required></textarea><br>
+                            <label>Rating (1-5):</label>
+                            <input type="number" name="rating" min="1" max="5" required><br>
+                            <button type="submit">Submit Review</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <p>You have already reviewed this game.</p>
+                {% endif %}
+                
+                <!-- Display all reviews for this game -->
+                <div style="margin-top: 10px;">
+                    <strong>Reviews:</strong>
+                    {% for review in game.reviews.all %}
+                        <div>
+                            {{ review.user.username }} rated {{ review.rating }}/5
+                            <p>{{ review.text }}</p>
+                        </div>
+                    {% empty %}
+                        <p>No reviews yet.</p>
+                    {% endfor %}
+                </div>
+            </li>
         {% endfor %}
     </ul>
 {% else %}

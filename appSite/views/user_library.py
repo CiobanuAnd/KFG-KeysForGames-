@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
-from appSite.models import User, Game, Purchase
+from appSite.models import User, Game, Purchase, Review
 
 @login_required
 def my_library(request):
@@ -25,7 +25,10 @@ def my_library(request):
 
     purchased_games = Game.objects.filter(purchase__user=user)
 
+    reviewed_game_ids = Review.objects.filter(user=user).values_list('game_id', flat=True)
+
     return render(request, 'gameshop/library.html', {
         'user': user,
-        'purchased_games': purchased_games
+        'purchased_games': purchased_games,
+        'reviewed_game_ids': reviewed_game_ids
     })
